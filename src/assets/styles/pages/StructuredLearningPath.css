@@ -1,0 +1,13 @@
+.structured-learning-path {
+  max-width: 1200px;
+  border-radius: 8px;
+  border-left: #335f5b;
+}
+.Structured-card {
+    width: 100% !important;
+  max-width: 240px;
+  max-height: 500px;
+  border-radius: 30px;
+  padding: 32px;
+  background-color: #f7f2e7;
+}

@@ -1,0 +1,79 @@
+$primary-color: #3f4c42;
+$heading: #1f1f1f;
+$sub-heading: #515151;
+$light-color: #f7f2e7;
+$green-color: #335f5b;
+$yellow-color: #eca939;
+$heading: #333333 !default;
+$drkred-color: #b9533d;
+$gray-color: #e4e4e7;
+$light-green: #7db28e;
+$lime: #e5e0c6;
+$darkred-color: #b9533d;
+$yellow-text-color: #eca939;
+$websafe: #5e7c88;
+$bg-light-white: #f3f3f3;
+$bg-light-pink : #FF9882;
+
+.bg-light-pink{
+  background-color: $bg-light-pink;
+}
+.border-red {
+  border: 1px solid $darkred-color;
+}
+
+.bg-light-white {
+  background-color: $bg-light-white;
+}
+.yellow-text {
+  color: $yellow-text-color;
+}
+.green-text {
+  color: $light-green;
+}
+.websafe {
+  color: $websafe;
+}
+.websafe-bg {
+  background-color: $websafe;
+}
+.darkred-color {
+  color: $darkred-color;
+}
+.bg-main {
+  background-color: $primary-color;
+}
+.bg-light-green {
+  background-color: $light-green !important;
+}
+.bg-dark-green {
+  background-color: $green-color !important;
+}
+.bg-light-color {
+  background-color: $light-color;
+}
+.bg-yellow-color {
+  background-color: $yellow-color !important;
+}
+.bg-dark-red {
+  background-color: $drkred-color !important;
+}
+.bg-gray-color {
+  background-color: $gray-color !important;
+}
+// color
+.text-green {
+  color: $green-color;
+}
+.text-dark {
+  color: $heading;
+}
+.sub-heading {
+  color: $sub-heading;
+}
+.lime {
+  background-color: $lime;
+}
+.border-rounded {
+  border-radius: 30px;
+}

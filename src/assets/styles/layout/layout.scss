@@ -1,0 +1,30 @@
+@use "../_variables" as vars;
+
+// :root{
+//     overflow: hidden;
+// }
+.topbar{
+    box-shadow: 0px 4px 36.6px 0px #0000000F;
+    ul{
+        li{
+            a{
+                color:vars.$heading;
+                text-decoration: none;
+            }
+        }
+    }
+}
+.auth-container{
+    min-height: calc(100vh - 89px); ;
+}
+
+@media screen and (min-width:1400px){
+    .md\:p-7.auth-right-box{
+        padding:  4rem 4rem 4rem 7% !important;
+    }
+}
+@media screen and (max-width: 991px) {
+    .menus{
+        display: none !important;
+    }
+}

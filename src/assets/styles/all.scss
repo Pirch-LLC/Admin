@@ -1,0 +1,28 @@
+// // @import "./_variables.scss";
+// // // component
+// // @import "./component/button.scss";
+// // @import "./component/input.scss";
+// // // layout
+// // @import "./layout/layout.scss";
+
+
+// @use "./_variables" as *;
+// @use "./component/button";
+// @use "./component/input";
+// @use "./layout/layout";
+
+// // Forward all styles
+// @forward "./_variables";
+// @forward "./component/button";
+// @forward "./component/input";
+// @forward "./layout/layout";
+
+@import "./_variables.scss";
+// component
+@import "./component/button.scss";
+@import "./component/input.scss";
+@import "./component/table.scss";
+// layout
+@import "./layout/layout.scss";
+@import "./layout/dashboardLayout.scss";
+

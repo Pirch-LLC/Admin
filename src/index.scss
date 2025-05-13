@@ -1,0 +1,37 @@
+.container {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1620px;
+  }
+  
+  @media screen and (max-width: 1920px) {
+    .container {
+      max-width: 1620px;
+      width: 95%;
+    }
+  }
+  @media screen and (max-width: 1140px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+
+
+  @media screen and (max-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .container {
+      max-width: 100%;
+    }
+  }
+  

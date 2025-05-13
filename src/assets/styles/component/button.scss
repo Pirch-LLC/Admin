@@ -1,0 +1,11 @@
+@use "sass:color";
+@use "./../_variables" as vars;
+
+.primary-button {
+  background-color: vars.$primary-color;
+  color: #fff;
+
+  &:hover {
+    background-color: color.adjust(vars.$primary-color, $lightness: -10%);
+  }
+}
