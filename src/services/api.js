@@ -12,7 +12,6 @@ const api = async (
   try {
     let headers = {
       "Content-Type": contentType,
-      "ngrok-skip-browser-warning": "69420",
     };    
     let token = isAuthenticated();
 
