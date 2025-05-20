@@ -9,8 +9,8 @@ export const PrivateRoutes = [
     exact: true,
     children: [
       {
-        path: "add",
-        name: "Add User",
+        path: "invite",
+        name: "Invite User",
         component: AddUser,
         exact: true,
       },
