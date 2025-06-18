@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageTitleHeader from "../../shared/component/PageTitleHeader";
-import { CustomInput } from "../../shared/component/AllInputs";
-import { useNavigate } from "react-router-dom";
+import { CustomInput, CustomPassword } from "../../shared/component/AllInputs";
+import { useNavigate, useParams } from "react-router-dom";
 import formValidation from "../../utils/validations";
 import { showFormErrors } from "../../utils/commonFunctions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PrimaryButton from "../../shared/component/CustomButton";
-import {
-  sendUserInviteAction,
-} from "../../store/actions/userActions";
+import { addUserAction, getUserDataAction } from "../../store/actions/userActions";
 
 export default function AddUser() {
-  const items = [{ label: `Invite User` }];
+  const { id } = useParams();
+  const formText = id ? "Edit" : "Add";
+  const items = [{ label: `${formText} User` }];
   const home = {
     label: "Users",
     url: "#/users",
@@ -19,10 +19,26 @@ export default function AddUser() {
 
   const navigate = useNavigate();
   const [data, setData] = useState({
+    name: "",
     email: "",
+    password: "",
   });
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (id) {
+      getUserDataAction(id, (res) => {
+        if (res?.success) {
+          setData({
+            name: generatedLessonResponse?.name || "",
+            email: generatedLessonResponse?.email || "",
+            password: generatedLessonResponse?.password || "",
+          });
+        }
+      });
+    }
+  }, [id]);
 
   const handleChange = ({ name, value }) => {
     const formErrors = formValidation(name, value, data);
@@ -32,7 +48,7 @@ export default function AddUser() {
   const handleSubmit = () => {
     if (showFormErrors(data, setData)) {
       dispatch(
-        sendUserInviteAction(data, setLoading, (res) => {
+        addUserAction(data, setLoading, (res) => {
           if (res?.success) {
             navigate("/users");
           }
@@ -44,13 +60,21 @@ export default function AddUser() {
   return (
     <>
       <PageTitleHeader
-        title={`Invite User`}
+        title={`${formText} User`}
         model={items}
         home={home}
         label={items[0].label}
       />
       <div className="p-4 shadow-1 border-round-xl">
         <div className="grid">
+          <CustomInput
+            name="name"
+            className="w-full"
+            data={data}
+            onChange={handleChange}
+            col={6}
+            extraClassName="px-2 md:w-6 w-full"
+          />
           <CustomInput
             name="email"
             className="w-full"
@@ -59,10 +83,20 @@ export default function AddUser() {
             col={6}
             extraClassName="px-2 md:w-6 w-full"
           />
+          <CustomPassword
+            name="password"
+            className="w-full"
+            label="Password"
+            placeholder="Password"
+            col={6}
+            onChange={handleChange}
+            data={data}
+            extraClassName="px-2 md:w-6 w-full"
+          />
         </div>
         <div className="flex justify-content-end mt-5 gap-3">
           <PrimaryButton
-            label="Invite User"
+            label="Add User"
             extraClassNames="bg-dark-red"
             onClick={handleSubmit}
             loading={loading}

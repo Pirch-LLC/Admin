@@ -1,5 +1,4 @@
 const endPoints = {
-  INVITE: "auth/admin/invite-send/",
   LOGIN: "auth/admin/login/",
   SIGNUP: "auth/signup/",
   SEND_OTP: "auth/send-otp/",

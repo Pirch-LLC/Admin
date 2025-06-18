@@ -1,6 +1,6 @@
 import axios from "axios";
+import constants from "../constants";
 import { isAuthenticated } from "./auth";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const api = async (
   method,
@@ -12,16 +12,17 @@ const api = async (
   try {
     let headers = {
       "Content-Type": contentType,
+      "ngrok-skip-browser-warning": "69420",
     };    
     let token = isAuthenticated();
-
+    let endPoint = constants.endPointUrl;
     if (token) {
       headers.Authorization = `Bearer ${isAuthenticated()}`;
     }
 
     let response = await axios({
       method,
-      url: API_BASE_URL + urlEndPoint,
+      url: endPoint + urlEndPoint,
       data,
       headers,
       params,
@@ -39,12 +40,12 @@ export const fileUploadApi = async (formData, next) => {
       "Content-Type": "multipart/form-data",
     };
     let token = isAuthenticated();
-
+    let endPoint = constants.endPointUrl;
     if (token) {
       headers.Authorization = `Bearer ${isAuthenticated()}`;
     }
 
-    let response = await axios.post(API_BASE_URL + "/upload-file", formData, {
+    let response = await axios.post(endPoint + "/upload-file", formData, {
       onUploadProgress: (progressEvent) => {
         const percentCompleted = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
@@ -66,12 +67,12 @@ export const multipleFileUploadApi = async (formData, next) => {
       "Content-Type": "multipart/form-data",
     };
     let token = isAuthenticated();
-
+    let endPoint = constants.endPointUrl;
     if (token) {
       headers.Authorization = `Bearer ${isAuthenticated()}`;
     }
 
-    let response = await axios.post(API_BASE_URL + "/upload-files", formData, {
+    let response = await axios.post(endPoint + "/upload-files", formData, {
       onUploadProgress: (progressEvent) => {
         const percentCompleted = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total

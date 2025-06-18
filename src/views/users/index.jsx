@@ -2,14 +2,17 @@ import React, { useEffect, useMemo, useState } from "react";
 import CustomTable from "../../shared/component/CustomTable";
 import { CustomDeleteDialog } from "../../shared/component/CustomDialog";
 import { useLocation, useNavigate } from "react-router-dom";
+// import PageTitleHeader from "../../shared/component/PageTitleHeader";
 import {
   deleteUserAction,
   getUserListAction,
+  // updateUserAction,
   updateUserActiveStatus,
 } from "../../store/actions/userActions";
 import { useDispatch } from "react-redux";
 import { setChild } from "../../store/slices/childSlice";
-import PrimaryButton from "../../shared/component/CustomButton";
+// import PrimaryButton from "../../shared/component/CustomButton";
+// import { InputSwitch } from "primereact/inputswitch";
 import { LoadingSwitch } from "../../shared/component/AllInputs";
 
 export default function Users() {
@@ -52,10 +55,15 @@ export default function Users() {
     );
   };
 
+  const handleAddChild = () => {
+    navigate("add");
+  };
+
   const onPageChange = (e) => {
-    navigate(`/child?page=${e.page + 1}&rows=${e.rows}`);
+    navigate(`/users?page=${e.page + 1}&rows=${e.rows}`);
+    setFirst(e.first);
     fetchUsers(e.page + 1, e.rows);
-    setCount(e.first);
+
   };
 
   const onDelete = (id) => {
@@ -110,7 +118,6 @@ export default function Users() {
       accessor: "is_active",
       name: "Active",
       body: (options) => {
-        console.log("options", options);
         const [loading, setLoading] = useState(false);
         return (
           <LoadingSwitch
@@ -125,21 +132,28 @@ export default function Users() {
 
   return (
     <>
-      <div className="flex justify-content-end mb-3">
+      {/* <div className="flex justify-content-end mb-3">
         <PrimaryButton
-          label={"+Invite User"}
+          label={"+ Add User"}
           extraClassNames="bg-dark-red"
-          onClick={() => navigate("invite")}
+          onClick={() => navigate("add")}
         />
-      </div>
+      </div> */}
       <CustomTable
         list={userList}
         columns={columns}
-        count={count}
         loading={loading}
         first={first}
-        rows={Number(rows)}
+        rows={rows}
+        count={count}
         slice={setChild}
+        // onView={(rowData) =>{
+        //   navigate(`/children/view/${rowData?.id}`)
+        // }}
+        // onEdit={(rowData) => {
+        //   navigate(`${rowData?.id}`);
+        //   dispatch(setChild(rowData));
+        // }}
         onDelete={onDelete}
         onPageChange={onPageChange}
       />

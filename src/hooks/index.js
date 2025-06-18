@@ -15,7 +15,6 @@ export default function useBlockNavigation(shouldBlock, message) {
     };
 
     const handlePopState = () => {
-        console.log("Popstate event triggered");
       if (shouldBlock && !window.confirm(message)) {
         // Push the current path again to undo back nav
         navigate(currentPath, { replace: true });
