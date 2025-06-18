@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import constants from "../constants";
 
 export const getImageURL = (path) => {
   if (path) {
@@ -6,7 +6,7 @@ export const getImageURL = (path) => {
       if (path.includes("http")) {
         return path;
       } else {
-        return API_BASE_URL + path;
+        return constants.baseUrl + path;
       }
     } else {
       return URL.createObjectURL(path);
