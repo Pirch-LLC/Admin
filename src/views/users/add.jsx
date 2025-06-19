@@ -17,6 +17,8 @@ export default function AddUser() {
     url: "#/users",
   };
 
+
+
   const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
