@@ -5,10 +5,8 @@ import {
   CustomInput,
   CustomPassword,
 } from "../../shared/component/AllInputs";
-import { Link, useNavigate } from "react-router-dom";
-import PrimaryButton, {
-  GoogleButton,
-} from "../../shared/component/CustomButton";
+import { useNavigate } from "react-router-dom";
+import PrimaryButton from "../../shared/component/CustomButton";
 import formValidation from "../../utils/validations";
 import { useDispatch } from "react-redux";
 import { showFormErrors } from "../../utils/commonFunctions";
@@ -37,8 +35,14 @@ export default function Login() {
       setLoading(true);
       dispatch(
         loginAction(payload, setLoading, (res) => {
+          if (res?.two_factor_auth) {
+            navigate("/otp-verification", {
+              state: { data: { token: res?.token, email: res?.email } }
+            })
+          } else {
+            login(res.access, () => navigate("/users"));
+          }
           setLoading(false);
-          login(res.access, () => navigate("/users"));
         })
       );
     }

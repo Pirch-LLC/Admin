@@ -4,6 +4,7 @@ import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ProtectedRoutes } from "./routes/ProtectedRoutes";
 import { isAuthenticated } from "./services/auth";
 import "./assets/styles/pages/all.css";
+import OtpVerification from "./pages/auth/OtpVerification";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               !isAuthenticated() ? <Login /> : <Navigate to="/users" />
             }
           />
+          <Route path="otp-verification" element={<OtpVerification />} />
         </Routes>
         <ProtectedRoutes />
       </HashRouter>

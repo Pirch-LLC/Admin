@@ -156,6 +156,7 @@ export default function Users() {
         // }}
         onDelete={onDelete}
         onPageChange={onPageChange}
+        title={"Users"}
       />
       <CustomDeleteDialog
         isOpen={isOpen}

@@ -1,15 +1,16 @@
 import { setUserProfile } from "../store/slices/userSlice";
 
-export const login = (token,next) => {
+export const login = (token, next) => {
   try {
     if (token) {
-    localStorage.setItem("appToken",JSON.stringify(token))
+      localStorage.setItem("appToken", JSON.stringify(token))
     }
     next()
   } catch (error) {
     return false;
   }
 };
+
 export const isAuthenticated = () => {
   try {
     if (typeof window == "undefined") {
@@ -39,7 +40,7 @@ export const authenticate = (appToken, rememberMe, next) => {
   }
 };
 
-export const logout = (dispatch,next) => {
+export const logout = (dispatch, next) => {
   if (typeof window !== "undefined") {
     localStorage.clear();
     sessionStorage.clear();
@@ -49,3 +50,9 @@ export const logout = (dispatch,next) => {
     }
   }
 };
+
+export const store2FAToken = (token) => {
+  if (token) {
+    sessionStorage.setItem("token", appToken);
+  }
+}
