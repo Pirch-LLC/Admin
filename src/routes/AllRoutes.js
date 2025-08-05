@@ -1,3 +1,4 @@
+import Invoices from "../views/Invoices/Invoices";
 import Users from "../views/users";
 import AddUser from "../views/users/add";
 
@@ -21,5 +22,11 @@ export const PrivateRoutes = [
         exact: true,
       },
     ],
+  },
+  {
+    path: "/invoices",
+    name: "Invoices",
+    component: Invoices,
+    exact: true,
   },
 ];

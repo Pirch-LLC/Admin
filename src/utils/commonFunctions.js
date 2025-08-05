@@ -137,3 +137,28 @@ export const fromSlug = (slug) => {
     .replace(/-/g, " ") // Replace hyphens with spaces
     .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize first letter of each word
 };
+
+export const getStatusColors = (status) => {
+  switch (status) {
+    case "failed":
+      return "text-red-600";
+
+    case "Fully":
+      return "text-yellow-500";
+
+    case "Social Worker":
+      return "text-blue-600";
+
+    case "Follow-up":
+      return "text-orange-500";
+
+    case "paid":
+      return "text-green-600";
+
+    case "Handyman":
+      return "text-cyan-500";
+
+    default:
+      return "";
+  }
+};

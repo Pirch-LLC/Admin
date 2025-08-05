@@ -1,23 +1,14 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
-import PrimaryButton from "../../shared/component/CustomButton";
+import { Link, useLocation } from "react-router-dom";
 import { Divider } from "primereact/divider";
 import DashboardIcon from "../../assets/icon/dashboard.svg";
-import ChildIcon from "../../assets/icon/managechild.svg";
-import AiLesson from "../../assets/icon/ai-lesson.svg";
-import FieldTripIcon from "../../assets/icon/field-trip.svg";
-import CalendarIcon from "../../assets/icon/Calendar.svg";
 import { CustomLogoutDialog } from "../../shared/component/CustomDialog";
 import { logout } from "../../services/auth";
 import { useDispatch } from "react-redux";
-import plans from "../../assets/images/icons/Plans.svg";
-import deactive from "../../assets/images/icons/Deactivateaccount.svg";
-import Plansinactive from "../../assets/images/icons/Plansinactive.svg";
-import Accountactive from "../../assets/images/icons/Accountactive.svg";
 import clsx from "clsx";
 import Pirchlogo from "../../assets/images/Pirchlogo.svg";
-
+import InvoiceIcon from "../../assets/icon/invoicesInactive.svg"
+import ChildIcon from "../../assets/icon/managechild.svg"
 export default function Sidebar({
   sidebarClass,
   logoSrc,
@@ -27,12 +18,13 @@ export default function Sidebar({
 }) {
   const [visible, setVisible] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const sidebarItems = [
-    { label: "Users", icon: DashboardIcon, path: "/users" },
+    { label: "Users", icon: ChildIcon, path: "/users" },
+    { label: "Invoices", icon: InvoiceIcon, path: "/invoices" },
   ];
   const [isOpen, setIsOpen] = useState(false);
 
@@ -71,7 +63,7 @@ export default function Sidebar({
                     }
                   )}
                 >
-                  <i className="pi pi-user"></i>
+                  <img src={item?.icon} />
                   <span className={`text-sm ${labelClass}`}>{item.label}</span>
                 </Link>
               </li>

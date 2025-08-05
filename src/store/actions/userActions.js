@@ -47,7 +47,7 @@ export const addUserAction = (data, setLoading, onRes) => async (dispatch) => {
 export const getUserListAction = (page, rows, setLoading, onRes) => async (dispatch) => {
   try {
     setLoading && setLoading(true);
-    const result = await api("get", endPoints.USERS + `/?limit=${rows}&page=${page}`);
+    const result = await api("get", endPoints.USERS + `?limit=${rows}&page=${page}`);
     if (result?.success) {
       dispatch(setChildrenList(result));
       return onRes && onRes(result);

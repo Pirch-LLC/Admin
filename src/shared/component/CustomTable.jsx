@@ -10,6 +10,7 @@ import {
   CustomEyeIconButton,
   CustomWarningButton,
 } from "./CustomButton";
+import PageTitleHeader from "./PageTitleHeader";
 
 export default function CustomTable({
   list,
@@ -40,6 +41,7 @@ export default function CustomTable({
   hideActions,
   emptysrc,
   showCounts,
+  title
 }) {
   const dispatch = useDispatch();
   const [timer, setTimer] = useState(1);
@@ -118,6 +120,9 @@ export default function CustomTable({
 
   return (
     <div>
+      <PageTitleHeader
+        title={title || "List"}
+      />
       <DataTable
         className="w-full custom-table"
         value={list}
@@ -165,7 +170,7 @@ export default function CustomTable({
               filterElement={col?.filterElement}
               filterMenuStyle={{ width: "14rem" }}
               style={{ minWidth: "180px" }}
-              className={`${col?.className || ""} capitalize`}
+              className={`${col?.className || "capitalize"} `}
               filterClear={filterClearTemplate}
               filterApply={filterApplyTemplate}
               body={col?.body}
